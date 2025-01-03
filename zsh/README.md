@@ -3,6 +3,7 @@
 # ZSH Tools
 
 ## Cesar cracker
+Function to decode things that have been previously encoded using based-on-Caesar algorithm.
 
 Example of execution:
 ```
