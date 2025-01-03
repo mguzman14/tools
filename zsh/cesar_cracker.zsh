@@ -1,4 +1,6 @@
-#!bin/zsh
+# cesar.zsh
+# Description: function to decode strings or files encoded using based-on Caesar algorithm
+# Example: cesar -t str -r 13 -i 'text to decode'
 
 function cesar() {
   while getopts "t:i:r:h" opt; do
