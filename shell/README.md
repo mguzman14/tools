@@ -13,7 +13,7 @@ Here are some funcions to work on a shell environment. Some of them have been cr
 1. [Cesar](#cesar)
 
 ### Cesar
-Function to encode or decode text strings and files that have been previously encoded using based-on-Caesar algorithm such as rot13. The code is slightly different in both `zsh` and `bash` shells due to both of their diferences. However, the execution of the function works the same way.
+Function to encode or decode text strings and files that have been previously encoded using based-on-Caesar algorithm such as rot13. The code is slightly different in both `zsh` and `bash` shells due to both of their diferences. However, the execution of the function works the same way. The source code can be found in folders [bash](https://github.com/mguzman14/tools/blob/main/shell/bash/cesar.sh) and [zsh](https://github.com/mguzman14/tools/blob/main/shell/zsh/cesar.zsh) respectively.
 
 The function accepts the following **parameters**:
 - `-t`: input type. It must be file or str (for string text)
@@ -23,16 +23,16 @@ The function accepts the following **parameters**:
 
 Here are some **examples** of use:
 
-Using a text string as input
+- Using a text string as input
 ```bash
 cesar -t str -r 13 -i 'Gur cnffjbeq vf 7k16JArUVv5LxVuJfsSVdbbtaHGlw9D4'
 ```
 
-Using a file as input
+- Using a file as input
 ```bash
 cesar -t file -r 13 -i /etc/hosts
 ```
-Looping 25 times over the function to print all the possible results:
+- Looping 25 times over the function to print all the possible results:
 ```bash
 for i in $(seq 1 25); do 
     cesar -t str -r $i -i 'Gur cnffjbeq vf 7k16JArUVv5LxVuJfsSVdbbtaHGlw9D4'; 
