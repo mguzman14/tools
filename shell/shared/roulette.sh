@@ -176,32 +176,7 @@ function inverselab() {
           bet=$((${mySeq[0]} + ${mySeq[-1]}))
 
           echo -e "La secuencia se ha reestablecido a: [${mySeq[@]}]"
-
-        elif [ $money -lt $(($bet_to_renew-100)) ]; then
-          
-          let bet_to_renew-=50 
-          echo -e "Se ha llegado al mínimo crítico -> reajustamos el tope a $bet_to_renew"
-          
-          mySeq+=($bet)
-          mySeq=(${mySeq[@]})
-
-          echo -e "Nuestra nueva secuencia es ${mySeq[@]}"
-
-          if [ "${#mySeq[@]}" -ne 1 ] && [ "${#mySeq[@]}" -ne 0 ]; then
-            bet=$((${mySeq[0]} + ${mySeq[-1]}))
-          elif [ "${#mySeq[@]}" -eq 1 ]; then # cuando haya un único elemento en mySeq
-            bet=${mySeq[0]}
-          else
-            echo "[!] La secuencia se ha quedado sin valores"
-            mySeq=(1 2 3 4)
-            echo -e "Reestablecemos la secuencia en [${mySeq}]"
-            bet=$((${mySeq[0]} + ${mySeq[-1]}))
-
-          fi
-
-
         else
-          
           mySeq+=($bet)
           mySeq=(${mySeq[@]})
 
@@ -256,25 +231,54 @@ function inverselab() {
 
         echo "Ha salido el $random_number -> impar -> pierdes"
 
-        unset mySeq[0]
-        unset mySeq[-1] 2>/dev/null # si el array tiene 1 elemento, esto generará un error -> lo redirigimos al dev/null
-        mySeq=(${mySeq[@]})
+          if [ $money -lt $(($bet_to_renew-100)) ]; then
+          
+          let bet_to_renew-=50 
+          echo -e "Se ha llegado al mínimo crítico -> reajustamos el tope a $bet_to_renew"
+          
+
+          unset mySeq[0]
+          unset mySeq[-1] 2>/dev/null # 
+
+          mySeq=(${mySeq[@]})
+
+          echo -e "Nuestra nueva secuencia es ${mySeq[@]}"
+
+          if [ "${#mySeq[@]}" -ne 1 ] && [ "${#mySeq[@]}" -ne 0 ]; then
+            bet=$((${mySeq[0]} + ${mySeq[-1]}))
+          elif [ "${#mySeq[@]}" -eq 1 ]; then # cuando haya un único elemento en mySeq
+            bet=${mySeq[0]}
+          else
+            echo "[!] La secuencia se ha quedado sin valores"
+            mySeq=(1 2 3 4)
+            echo -e "Reestablecemos la secuencia en [${mySeq}]"
+            bet=$((${mySeq[0]} + ${mySeq[-1]}))
+
+          fi
 
 
-        echo -e "La secuencia que nos queda es: [${mySeq[@]}]"
-
-        if [ "${#mySeq[@]}" -ne 1 ] && [ "${#mySeq[@]}" -ne 0 ]; then
-          bet=$((${mySeq[0]} + ${mySeq[-1]}))
-        elif [ "${#mySeq[@]}" -eq 1 ]; then # cuando haya un único elemento en mySeq
-          bet=${mySeq[0]}
         else
-          echo "[!] La secuencia se ha quedado sin valores"
-          mySeq=(1 2 3 4)
-          echo -e "Reestablecemos la secuencia en [${mySeq[@]}]"
-          bet=$((${mySeq[0]} + ${mySeq[-1]}))
 
+
+          unset mySeq[0]
+          unset mySeq[-1] 2>/dev/null # si el array tiene 1 elemento, esto generará un error -> lo redirigimos al dev/null
+          mySeq=(${mySeq[@]})
+
+
+          echo -e "La secuencia que nos queda es: [${mySeq[@]}]"
+
+          if [ "${#mySeq[@]}" -ne 1 ] && [ "${#mySeq[@]}" -ne 0 ]; then
+            bet=$((${mySeq[0]} + ${mySeq[-1]}))
+          elif [ "${#mySeq[@]}" -eq 1 ]; then # cuando haya un único elemento en mySeq
+            bet=${mySeq[0]}
+          else
+            echo "[!] La secuencia se ha quedado sin valores"
+            mySeq=(1 2 3 4)
+            echo -e "Reestablecemos la secuencia en [${mySeq[@]}]"
+            bet=$((${mySeq[0]} + ${mySeq[-1]}))
+
+          fi
         fi
-
 
 
 
